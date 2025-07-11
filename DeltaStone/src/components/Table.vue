@@ -25,14 +25,14 @@ const props = defineProps({
     required: true,
     default: () => []
   },
-  showDelete: { // 新增控制删除按钮显示的prop
+  showDelete: {
     type: Boolean,
     default: false
   }
 });
 
-const emit = defineEmits(['delete']); // 声明delete事件
-
+const emit = defineEmits(['delete']);
+// 基础列配置
 const baseColumns = [
   {
     title: 'ID',
@@ -56,7 +56,7 @@ const baseColumns = [
   }
 ];
 
-// 动态计算列（根据showDelete决定是否添加操作列）
+// 动态计算列
 const mergedColumns = computed(() => {
   if (!props.showDelete) return baseColumns;
   
