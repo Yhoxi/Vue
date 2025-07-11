@@ -4,10 +4,9 @@
     <div class="card-content">
       <div class="table-wrapper">
         <DataTable 
-          :dataSource="tableData" 
-          :showActions="true"
-          @delete="handleDelete"
-        />
+          :dataSource="tableData"
+          :showDelete="true"
+          @delete="handleDelete" />
       </div>
       <div class="chart-wrapper">
         <BarChart :chartData="chartData" />
@@ -17,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { Card } from 'ant-design-vue'
 import DataTable from '../components/Table.vue'
 import BarChart from '../components/Barchart.vue'
@@ -25,8 +24,7 @@ import workData from '../assets/data/data.json'
 
 const ACard = Card
 
-// 统一数据源
-const taskList = ref([]);
+const taskList = ref([...workData]);
 
 // 表格数据
 const tableData = computed(() => 
@@ -41,12 +39,7 @@ const chartData = computed(() =>
   taskList.value.map(({ project, hours }) => ({ project, hours }))
 );
 
-// 初始化数据
-onMounted(() => {
-  taskList.value = [...workData];
-});
-
-// 删除处理器
+// 删除处理函数
 const handleDelete = (id) => {
   taskList.value = taskList.value.filter(item => item.id !== id);
 };

@@ -1,39 +1,39 @@
 <template>
   <a-table 
     :dataSource="dataSource" 
-    :columns="columns"
+    :columns="mergedColumns"
     rowKey="id"
     bordered
   >
-    <template v-if="showActionColumn" #bodyCell="{ column, record }">
-      <template v-if="column.key === 'action'">
-        <a-button type="link" danger @click="handleDelete(record)">Delete</a-button>
+    <template #bodyCell="{ column, record }">
+      <template v-if="column.key === 'action' && showDelete">
+        <a-button type="link" danger @click="handleDelete(record.id)">Delete</a-button>
       </template>
     </template>
   </a-table>
 </template>
 
 <script setup>
-import { Table } from 'ant-design-vue'
+import { Table, Button } from 'ant-design-vue';
 import { computed } from 'vue';
 
 const ATable = Table
-
-// 构建props，等待数据传入
+const AButton = Button
 const props = defineProps({
   dataSource: {
     type: Array,
     required: true,
     default: () => []
   },
-  showActions: {
+  showDelete: { // 新增控制删除按钮显示的prop
     type: Boolean,
     default: false
   }
 });
 
-// 表格列配置
-const columns = [
+const emit = defineEmits(['delete']); // 声明delete事件
+
+const baseColumns = [
   {
     title: 'ID',
     dataIndex: 'id',
@@ -44,7 +44,7 @@ const columns = [
     dataIndex: 'project',
     key: 'project'
   },
-{
+  {
     title: 'Overtime',
     dataIndex: 'overtime',
     key: 'overtime',
@@ -54,22 +54,24 @@ const columns = [
     dataIndex: 'hours',
     key: 'hours'
   }
-]
+];
 
-// 动态添加操作列
-const computedColumns = computed(() => {
-  const columns = [...baseColumns];
-  if (props.showActions) {
-    columns.push({
+// 动态计算列（根据showDelete决定是否添加操作列）
+const mergedColumns = computed(() => {
+  if (!props.showDelete) return baseColumns;
+  
+  return [
+    ...baseColumns,
+    {
       title: 'Action',
       key: 'action',
       width: 100
-    });
-  }
-  return columns;
+    }
+  ];
 });
 
-const handleDelete = (record) => {
-  emit('delete', record.id);
+// 删除处理函数
+const handleDelete = (id) => {
+  emit('delete', id);
 };
 </script>
