@@ -70,6 +70,6 @@
 # 整体技术栈
 - **前端框架**：vue.js
 - **构建工具**：vite.js
-- **组件库**：Ant Design
+- **组件库**：Ant Design Vue
 - **可视化图表库**：Echarts
 ---
