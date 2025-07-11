@@ -73,5 +73,33 @@
 - **组件库**：Ant Design Vue
 - **可视化图表库**：Echarts
 ---
+
+# 项目整体框架
+```
+DeltaStone
+├── node_modules
+├── public
+├── src
+│   ├── assets\data
+│   │   └── data.json
+│   ├── components
+│   │   ├── Barchart.vue
+│   │   └── Table.vue
+│   ├── router
+│   │   └── index.js
+│   ├── views
+│   │   ├── AdminHome.vue
+│   │   ├── Login.vue
+│   │   └── UserHome.vue
+│   ├── App.vue
+│   └── main.js
+├── .gitignore
+├── babel.config.js
+├── index.html
+├── package - lock.json
+├── package.json
+├── README.md
+└── vite.config.js
+```
 # 实际开发流程
 
