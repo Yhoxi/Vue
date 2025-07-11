@@ -102,4 +102,25 @@ DeltaStone
 └── vite.config.js
 ```
 # 实际开发流程
-
+## 构建环境
+- 使用vite搭建vue项目
+- 安装vue-ruter，ant-design-vue，echart等组件库
+- 对环境进行clear_up
+---
+## 完成登录功能
+- 创建Login.vue,UserHome.vue,AdminHome.vue
+- 创建router，分配路由
+- 配置router
+- 完成Login.vue的页面设计，登录逻辑
+---
+## 图表组件开发
+- 创建data.json数据
+- 创建Table.vue,Barchart.vue
+- 组件中引入数据，使用antdesign和Echart完成图表数据显示(Echart部分由ai辅助完成)
+---
+## 主页面引入和功能完善
+- UserHome.vue,AdminHome.vue引入图表子组件
+- 统一数据来源，父组件引入data.json,完成数据处理，由子组件通过props接收父组件传递的数据
+- 添加删除功能添加，为Table.vue添加动态列action，AdminHome.vue传入showDelete="true"，显示删除键列
+## 页面美化
+- 进行简单页面美化，设置style，完全交由ai完成
