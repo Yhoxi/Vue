@@ -4,17 +4,16 @@
         <a-form>
             <a-form-item label="账号">
                 <a-input 
-                v-model="username" 
+                v-model:value ="username" 
                 placeholder="请输入账号">
                 </a-input>
             </a-form-item>
 
             <a-form-item label="密码">
                 <a-input-password
-                    v-model="password" 
-                    placeholder="请输入密码"
-                    allow-clear
-                    >
+                v-model:value ="password" 
+                placeholder="请输入密码"
+                allow-clear>
                 </a-input-password>
             </a-form-item>
 
@@ -34,7 +33,7 @@
 
 <script setup>
 import { Card, Form, Input, Button, InputPassword } from 'ant-design-vue';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 // 组件显式注册
