@@ -46,15 +46,72 @@ const handleDelete = (id) => {
 };
 </script>
 
+<!-- AI辅助页面美化 -->
 <style scoped>
-.card-content {
-  display: flex;
-  gap: 16px;
+/* 整体卡片增强 */
+.a-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
-.table-wrapper,
+/* 标题样式优化 */
+:deep(.ant-card-head) {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e6e9f0 100%);
+  border-bottom: 1px solid #e8eff9;
+}
+
+:deep(.ant-card-head-title) {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  padding: 16px 0;
+}
+
+/* 内容区域间距优化 */
+.card-content {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  background-color: #fafafa;
+}
+
+/* 表格容器增强 */
+.table-wrapper {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #ebeef5;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.table-wrapper:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 图表容器增强 */
 .chart-wrapper {
   flex: 1;
   min-width: 0;
+  padding: 16px;
+  border-radius: 6px;
+  background: white;
+  border: 1px solid #ebeef5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* 响应式处理 */
+@media (max-width: 768px) {
+  .card-content {
+    flex-direction: column;
+  }
+  
+  .table-wrapper,
+  .chart-wrapper {
+    width: 100%;
+  }
 }
 </style>
